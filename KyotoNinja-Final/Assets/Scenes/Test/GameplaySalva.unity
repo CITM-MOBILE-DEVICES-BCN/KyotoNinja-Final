@@ -1436,7 +1436,7 @@ MonoBehaviour:
   - {fileID: 8953511826043849491, guid: cf823c9feb5090949b3e6b9493052ebc, type: 3}
   roomHeight: 30
   player: {fileID: 389736848}
-  destroyThreshold: 30
+  destroyThreshold: 50
 --- !u!4 &2022176671
 Transform:
   m_ObjectHideFlags: 0
