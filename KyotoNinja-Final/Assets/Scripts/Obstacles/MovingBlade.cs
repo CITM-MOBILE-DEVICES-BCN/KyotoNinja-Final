@@ -2,17 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class MovingBlade : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public float rotationSpeed = 360f;
 
-    // Update is called once per frame
     void Update()
     {
-        
+        // Rotar la cuchilla sobre el eje Z
+        transform.Rotate(0, 0, rotationSpeed * Time.deltaTime);
     }
 }

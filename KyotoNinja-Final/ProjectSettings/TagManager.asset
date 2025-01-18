@@ -4,14 +4,12 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Wall
-  - IceWall
-  - BounceWall
-  - Coin
-  - CoinCollector
-  - TemporalPowerUp
   - Obstacle
+  - Wall
+  - Coin
+  - IceWall
   - BeginWall
+  - BounceWall
   layers:
   - Default
   - TransparentFX
