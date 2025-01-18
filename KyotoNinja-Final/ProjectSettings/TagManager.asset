@@ -3,15 +3,23 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Wall
+  - IceWall
+  - BounceWall
+  - Coin
+  - CoinCollector
+  - TemporalPowerUp
+  - Obstacle
+  - BeginWall
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Enemies
   - Water
   - UI
-  - 
+  - EnemyAttack
   - 
   - 
   - 

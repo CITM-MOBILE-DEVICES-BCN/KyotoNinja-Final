@@ -756,13 +756,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 814864302}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c6f8c40cf5cdde4dae2f8e3ef3a339e, type: 3}
+  m_Script: {fileID: 11500000, guid: f392a7d0a4d77f5469a4d5cb706cc869, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   loadingBar: {fileID: 8042230767064707207}
   progressText: {fileID: 6459591531529052843}
   nextSceneName: GameSelector
-  fakeLoadDuration: 2
+  fakeLoadDuration: 1
 --- !u!1 &987617312
 GameObject:
   m_ObjectHideFlags: 0
