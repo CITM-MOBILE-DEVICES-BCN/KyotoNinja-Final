@@ -983,12 +983,24 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1149703559175793456, guid: a7ec87c12b907984d908a36d3ee97f71, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.87626
+      objectReference: {fileID: 0}
+    - target: {fileID: 1149703559175793456, guid: a7ec87c12b907984d908a36d3ee97f71, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.87626
+      objectReference: {fileID: 0}
+    - target: {fileID: 1149703559175793456, guid: a7ec87c12b907984d908a36d3ee97f71, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.87626
+      objectReference: {fileID: 0}
+    - target: {fileID: 1149703559175793456, guid: a7ec87c12b907984d908a36d3ee97f71, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 19.49
+      value: 18.01
       objectReference: {fileID: 0}
     - target: {fileID: 1149703559175793456, guid: a7ec87c12b907984d908a36d3ee97f71, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.2
+      value: -7.33
       objectReference: {fileID: 0}
     - target: {fileID: 1149703559175793456, guid: a7ec87c12b907984d908a36d3ee97f71, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1424,6 +1436,7 @@ MonoBehaviour:
   - {fileID: 8953511826043849491, guid: cf823c9feb5090949b3e6b9493052ebc, type: 3}
   roomHeight: 30
   player: {fileID: 389736848}
+  destroyThreshold: 30
 --- !u!4 &2022176671
 Transform:
   m_ObjectHideFlags: 0
