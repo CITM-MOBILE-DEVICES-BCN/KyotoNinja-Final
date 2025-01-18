@@ -10,7 +10,6 @@ public class LevelGenerator : MonoBehaviour
     public float destroyThreshold = 15f;  // Distancia en la que las habitaciones se destruyen (ajustar según sea necesario)
 
     private float nextSpawnHeight;  // Altura para el próximo bloque
-    private bool isSpecialRoomSpawned = false;  // Para asegurarse de que solo haya una habitación especial
     private bool hasSpawnedFirstRoom = false;  // Verifica si ya se ha spawneado la primera habitación
 
     private List<GameObject> spawnedRooms = new List<GameObject>();  // Lista de habitaciones generadas
