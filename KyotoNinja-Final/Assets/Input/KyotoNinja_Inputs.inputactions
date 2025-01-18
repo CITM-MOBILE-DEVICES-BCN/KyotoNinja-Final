@@ -1,0 +1,54 @@
+{
+    "name": "KyotoNinja_Inputs",
+    "maps": [
+        {
+            "name": "Player",
+            "id": "0be6cd03-7668-4ff6-9058-67a6c59dd035",
+            "actions": [
+                {
+                    "name": "Touch",
+                    "type": "Button",
+                    "id": "c5e6acd8-5a34-47d7-9cf9-a245ab10af97",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Aim",
+                    "type": "Value",
+                    "id": "7936cc9d-f577-4285-bdd9-9ed5306ec360",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "e8358d62-e4cf-422b-9dc2-fca74a6fd43c",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Touch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "367979f3-745f-461f-be7a-5a61db34c3f4",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Aim",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
