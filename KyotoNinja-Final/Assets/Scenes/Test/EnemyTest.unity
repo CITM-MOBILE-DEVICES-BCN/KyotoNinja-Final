@@ -796,18 +796,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2376608260691538121, guid: 38ebcd7e6ce7e204f944c0d6247fe1f7, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4209315943967552909, guid: 38ebcd7e6ce7e204f944c0d6247fe1f7, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 1566409114}
+    - target: {fileID: 4209315943967552909, guid: 38ebcd7e6ce7e204f944c0d6247fe1f7, type: 3}
+      propertyPath: projectilePrefab
+      value: 
+      objectReference: {fileID: 8735111591447057555, guid: 3d7c0db0437608c43b4d9be14d72f5cd, type: 3}
     - target: {fileID: 6895557484024125465, guid: 38ebcd7e6ce7e204f944c0d6247fe1f7, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 6895557484024125465, guid: 38ebcd7e6ce7e204f944c0d6247fe1f7, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38ebcd7e6ce7e204f944c0d6247fe1f7, type: 3}
