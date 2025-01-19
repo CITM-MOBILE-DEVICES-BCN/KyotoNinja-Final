@@ -37,6 +37,8 @@ public class Projectile : MonoBehaviour
         // Verificamos si el proyectil colisiona con el jugador
         if (collider.CompareTag("Player"))
         {
+            Debug.Log("Player hit!");
+
             // Llamamos al método TakeDamage() del script PlayerHP
             PlayerHP playerHP = collider.GetComponent<PlayerHP>();
             if (playerHP != null)
