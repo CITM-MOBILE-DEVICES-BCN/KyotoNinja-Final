@@ -12,10 +12,13 @@ namespace KyotoNinja
         [SerializeField] private PlayerStats playerStats;
         [SerializeField] private float dashForce = 10f;
         [SerializeField] private float maxDragDistance = 5f;
+        [SerializeField] private Vector2 dashColliderSize;
 
         private InputMapping inputMapping;
         private Vector2 startPosition;
         private Vector2 dragDirection;
+        private Vector2 originalColliderSize;
+        private CapsuleCollider2D playerCollider;
 
         private int currentDashes;
         private float dashTimeRemaining;
@@ -60,6 +63,12 @@ namespace KyotoNinja
             timeSlowIntensity = playerStats.timeSlowIntensity;
         }
 
+        private void Start()
+        {
+            playerCollider = GetComponent<CapsuleCollider2D>();
+            originalColliderSize = playerCollider.size;
+        }
+
         private void Update()
         {
             if (currentState == PlayerState.AIMING)
@@ -90,6 +99,7 @@ namespace KyotoNinja
                 currentState = PlayerState.AIMING;
                 SlowTimeSpeed();
                 dashTimeRemaining = playerStats.dashTime;
+                playerCollider.size = dashColliderSize;
             }
 
             Vector2 screenPosition = inputMapping.Player.Aim.ReadValue<Vector2>();
@@ -135,11 +145,10 @@ namespace KyotoNinja
             if (collision.gameObject.CompareTag("Wall") && currentState != PlayerState.AIMING)
             {
                 currentState = PlayerState.ATTACHED;
-                Vector2 contactPoint = collision.contacts[0].point;
                 rb.velocity = Vector2.zero;
                 rb.gravityScale = 0f;
-                transform.position = contactPoint;
                 currentDashes = playerStats.initialDashes;
+                playerCollider.size = originalColliderSize;
             }
         }
 
@@ -184,6 +193,9 @@ namespace KyotoNinja
                 Gizmos.DrawLine(startPosition, startPosition + dragDirection);
                 Gizmos.DrawWireSphere(startPosition, 0.2f);
             }
+
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireCube(transform.position, dashColliderSize);
         }
     }
 
