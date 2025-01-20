@@ -646,8 +646,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 760420164}
-  dashForce: 10
-  maxDragDistance: 5
+  playerStats: {fileID: 11400000, guid: 6f8e019204353ea4eb3cb289f7103b70, type: 2}
+  dashForce: 7
+  maxDragDistance: 100
 --- !u!70 &760420166
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

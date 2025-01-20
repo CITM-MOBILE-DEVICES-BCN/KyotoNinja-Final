@@ -22,6 +22,7 @@ public class PlayerStats : ScriptableObject
     public int initialDashes = 2;
     public float dashTime = 1f;
     public float timeSlowIntensity = 0.5f;
+    public float dashForce = 10f;
 
     [Header("Player Stats")]
     public int maxLives = 3;
@@ -34,83 +35,54 @@ public class PlayerStats : ScriptableObject
     public float temporaryPowerUpDuration = 5f;
 
     [Header("Meta Power Ups")]
-    public MetaPowerUpConfig dashUpgrade;
-    public MetaPowerUpConfig dashTimeUpgrade;
-    public MetaPowerUpConfig timeSlowUpgrade;
-    public MetaPowerUpConfig coinCollectionUpgrade;
-    public MetaPowerUpConfig luckUpgrade;
-    public MetaPowerUpConfig tempPowerUpUpgrade;
+    public List<MetaPowerUpConfig> metaPowerUps = new List<MetaPowerUpConfig>();
+    //public MetaPowerUpConfig dashUpgrade;
+    //public MetaPowerUpConfig dashTimeUpgrade;
+    //public MetaPowerUpConfig timeSlowUpgrade;
+    //public MetaPowerUpConfig coinCollectionUpgrade;
+    //public MetaPowerUpConfig luckUpgrade;
+    //public MetaPowerUpConfig tempPowerUpUpgrade;
     #endregion
 
     #region Upgrades
-    public void UpgradeDash()
+    public void UpgradeMetaPowerUp(string name)
     {
-        if (currency >= dashUpgrade.price && dashUpgrade.maxLevel > 0)
+        foreach(var metaPowerUp in metaPowerUps)
         {
-            currency -= dashUpgrade.price;
-            dashUpgrade.price = (int)(dashUpgrade.basePrice * Mathf.Pow(dashUpgrade.priceMultiplier, dashUpgrade.maxLevel - 1));
-            dashUpgrade.level++;
-            OnStatsUpgrade?.Invoke();
-            initialDashes += (int)dashUpgrade.amountPerLevel;
-        }
-    }
-    public void UpgradeDashTime()
-    {
-        if (currency >= dashTimeUpgrade.price && dashTimeUpgrade.maxLevel > 0)
-        {
-            currency -= dashTimeUpgrade.price;
-            dashTimeUpgrade.price = (int)(dashTimeUpgrade.basePrice * Mathf.Pow(dashTimeUpgrade.priceMultiplier, dashTimeUpgrade.maxLevel - 1));
-            dashTimeUpgrade.level++;
-            OnStatsUpgrade?.Invoke();
-            dashTime += dashTimeUpgrade.amountPerLevel;
-        }
-    }
+            if (metaPowerUp.powerUpName == name)
+            {
+                if (currency >= metaPowerUp.price && metaPowerUp.maxLevel > 0)
+                {
+                    currency -= metaPowerUp.price;
+                    metaPowerUp.price = (int)(metaPowerUp.basePrice * Mathf.Pow(metaPowerUp.priceMultiplier, metaPowerUp.maxLevel - 1));
+                    metaPowerUp.level++;
+                    OnStatsUpgrade?.Invoke();
+                    switch (name)
+                    {
+                        case "Extra Dash":
+                            initialDashes += (int)metaPowerUp.amountPerLevel;
+                            break;
+                        case "Dash Time":
+                            dashTime += metaPowerUp.amountPerLevel;
+                            break;
+                        case "Time-Slow":
+                            timeSlowIntensity += metaPowerUp.amountPerLevel;
+                            break;
+                        case "Collection Range":
+                            coinCollectionRadius += metaPowerUp.amountPerLevel;
+                            break;
+                        case "Luck":
+                            luckMultiplier += metaPowerUp.amountPerLevel;
+                            break;
+                        case "PowerUp Duration":
+                            temporaryPowerUpDuration += metaPowerUp.amountPerLevel;
+                            break;
+                    }
+                }
+            }
 
-    public void UpgradeTimeSlow()
-    {
-        if (currency >= timeSlowUpgrade.price && timeSlowUpgrade.maxLevel > 0)
-        {
-            currency -= timeSlowUpgrade.price;
-            timeSlowUpgrade.price = (int)(timeSlowUpgrade.basePrice * Mathf.Pow(timeSlowUpgrade.priceMultiplier, timeSlowUpgrade.maxLevel - 1));
-            timeSlowUpgrade.level++;
-            OnStatsUpgrade?.Invoke();
-            timeSlowIntensity += timeSlowUpgrade.amountPerLevel;
-        }
-    }
 
-    public void UpgradeCoinCollection()
-    {
-        if (currency >= coinCollectionUpgrade.price && coinCollectionUpgrade.maxLevel > 0)
-        {
-            currency -= coinCollectionUpgrade.price;
-            coinCollectionUpgrade.price = (int)(coinCollectionUpgrade.basePrice * Mathf.Pow(coinCollectionUpgrade.priceMultiplier, coinCollectionUpgrade.maxLevel - 1));
-            coinCollectionUpgrade.level++;
-            OnStatsUpgrade?.Invoke();
-            coinCollectionRadius += coinCollectionUpgrade.amountPerLevel;
-        }
-    }
 
-    public void UpgradeLuck()
-    {
-        if (currency >= luckUpgrade.price && luckUpgrade.maxLevel > 0)
-        {
-            currency -= luckUpgrade.price;
-            luckUpgrade.price = (int)(luckUpgrade.basePrice * Mathf.Pow(luckUpgrade.priceMultiplier, luckUpgrade.maxLevel - 1));
-            luckUpgrade.level++;
-            OnStatsUpgrade?.Invoke();
-            luckMultiplier += luckUpgrade.amountPerLevel;
-        }
-    }
-
-    public void UpgradeTempPowerUp()
-    {
-        if (currency >= tempPowerUpUpgrade.price && tempPowerUpUpgrade.maxLevel > 0)
-        {
-            currency -= tempPowerUpUpgrade.price;
-            tempPowerUpUpgrade.price = (int)(tempPowerUpUpgrade.basePrice * Mathf.Pow(tempPowerUpUpgrade.priceMultiplier, tempPowerUpUpgrade.maxLevel - 1));
-            tempPowerUpUpgrade.level++;
-            OnStatsUpgrade?.Invoke();
-            temporaryPowerUpDuration += tempPowerUpUpgrade.amountPerLevel;
         }
     }
     #endregion
@@ -125,7 +97,7 @@ public class PlayerStats : ScriptableObject
 public class MetaPowerUpConfig
 {
     public string powerUpName;
-    public int basePrice = 10;
+    public int basePrice = 2;
     public int price;
     public float priceMultiplier = 5f;
     public int maxLevel = 10;

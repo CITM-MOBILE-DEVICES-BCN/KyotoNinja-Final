@@ -9,12 +9,17 @@ namespace KyotoNinja
     public class PlayerMovement : MonoBehaviour
     {
         [SerializeField] private Rigidbody2D rb;
+        [SerializeField] private PlayerStats playerStats;
         [SerializeField] private float dashForce = 10f;
         [SerializeField] private float maxDragDistance = 5f;
 
         private InputMapping inputMapping;
         private Vector2 startPosition;
         private Vector2 dragDirection;
+
+        private int currentDashes;
+        private float dashTimeRemaining;
+        private float timeSlowIntensity;
 
         private enum PlayerState
         {
@@ -36,6 +41,8 @@ namespace KyotoNinja
             inputMapping.Player.Touch.canceled += OnTouchCanceled;
             inputMapping.Player.Aim.performed += OnAimPerformed;
             inputMapping.Player.Enable();
+
+            InitializePlayer();
         }
 
         private void OnDisable()
@@ -46,8 +53,33 @@ namespace KyotoNinja
             inputMapping.Player.Disable();
         }
 
+        private void InitializePlayer()
+        {
+            currentDashes = playerStats.initialDashes;
+            dashTimeRemaining = playerStats.dashTime;
+            timeSlowIntensity = playerStats.timeSlowIntensity;
+        }
+
+        private void Update()
+        {
+            if (currentState == PlayerState.AIMING)
+            {
+                dashTimeRemaining -= Time.unscaledDeltaTime;
+                if (dashTimeRemaining <= 0)
+                {
+                    LoseDashOnAimTimeout();
+                    CancelAiming();
+                }
+            }
+        }
+
         private void OnTouchStarted(UnityEngine.InputSystem.InputAction.CallbackContext context)
         {
+            if (currentDashes <= 0)
+            {
+                return;
+            }
+
             if (currentState == PlayerState.ATTACHED)
             {
                 DetachFromWall();
@@ -56,6 +88,8 @@ namespace KyotoNinja
             if (currentState == PlayerState.IDLE || currentState == PlayerState.ATTACHED)
             {
                 currentState = PlayerState.AIMING;
+                SlowTimeSpeed();
+                dashTimeRemaining = playerStats.dashTime;
             }
 
             Vector2 screenPosition = inputMapping.Player.Aim.ReadValue<Vector2>();
@@ -74,15 +108,23 @@ namespace KyotoNinja
 
         private void OnTouchCanceled(UnityEngine.InputSystem.InputAction.CallbackContext context)
         {
-            if (currentState == PlayerState.AIMING)
+            if (currentState == PlayerState.AIMING && currentDashes > 0)
             {
                 dragDirection = Vector2.ClampMagnitude(dragDirection, maxDragDistance);
-                Dash(dragDirection);
+                PerformDash(dragDirection);
+                currentState = PlayerState.IDLE;
+                currentDashes--;
+            }
+
+            if (currentDashes <= 0)
+            {
                 currentState = PlayerState.IDLE;
             }
+
+            ResumeTimeSpeed();
         }
 
-        private void Dash(Vector2 direction)
+        private void PerformDash(Vector2 direction)
         {
             rb.velocity = Vector2.zero;
             rb.AddForce(direction.normalized * dashForce, ForceMode2D.Impulse);
@@ -97,6 +139,7 @@ namespace KyotoNinja
                 rb.velocity = Vector2.zero;
                 rb.gravityScale = 0f;
                 transform.position = contactPoint;
+                currentDashes = playerStats.initialDashes;
             }
         }
 
@@ -104,6 +147,33 @@ namespace KyotoNinja
         {
             rb.gravityScale = 1f;
             currentState = PlayerState.IDLE;
+        }
+
+        private void CancelAiming()
+        {
+            currentState = PlayerState.IDLE;
+            ResumeTimeSpeed();
+            dashTimeRemaining = 0f;
+        }
+
+        private void LoseDashOnAimTimeout()
+        {
+            if (currentDashes > 0)
+            {
+                currentDashes--;
+            }
+        }
+
+        private void ResumeTimeSpeed()
+        {
+            Time.timeScale = 1f;
+            Time.fixedDeltaTime = 0.02f;
+        }
+
+        private void SlowTimeSpeed()
+        {
+            Time.timeScale = timeSlowIntensity;
+            Time.fixedDeltaTime = 0.02f * Time.timeScale;
         }
 
         private void OnDrawGizmos()
