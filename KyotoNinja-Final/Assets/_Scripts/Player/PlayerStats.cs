@@ -22,7 +22,6 @@ public class PlayerStats : ScriptableObject
     public int initialDashes = 2;
     public float dashTime = 1f;
     public float timeSlowIntensity = 0.5f;
-    public float dashForce = 10f;
 
     [Header("Player Stats")]
     public int maxLives = 3;

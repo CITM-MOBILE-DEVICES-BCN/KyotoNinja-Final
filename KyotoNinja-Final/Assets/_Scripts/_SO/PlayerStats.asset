@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2661a17e17be0e41876dc9baa228287, type: 3}
   m_Name: PlayerStats
   m_EditorClassIdentifier: 
-  initialDashes: 2
-  dashTime: 1
-  timeSlowIntensity: 0.5
-  dashForce: 10
+  initialDashes: 3
+  dashTime: 2
+  timeSlowIntensity: 0.1
   maxLives: 3
   coinCollectionRadius: 1
   luckMultiplier: 1
