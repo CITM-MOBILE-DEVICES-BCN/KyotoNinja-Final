@@ -103,7 +103,7 @@ MonoBehaviour:
   playerStats: {fileID: 11400000, guid: 6f8e019204353ea4eb3cb289f7103b70, type: 2}
   dashForce: 20
   maxDragDistance: 100
-  dashColliderSize: {x: 0.7, y: 1}
+  dashColliderSize: {x: 0.7, y: 0.9}
 --- !u!50 &2663478785331076614
 Rigidbody2D:
   serializedVersion: 4

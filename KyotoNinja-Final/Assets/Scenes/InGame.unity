@@ -273,16 +273,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3244363109440354247, guid: 1356d2ede097b0043b365e2af4ddd961, type: 3}
+      propertyPath: m_DeadZoneHeight
+      value: 0.12
+      objectReference: {fileID: 0}
     - target: {fileID: 4451711712720457977, guid: 1356d2ede097b0043b365e2af4ddd961, type: 3}
       propertyPath: m_Name
       value: Virtual Camera
       objectReference: {fileID: 0}
     - target: {fileID: 6767124985276783310, guid: 1356d2ede097b0043b365e2af4ddd961, type: 3}
       propertyPath: m_Follow
-      value: 
-      objectReference: {fileID: 930292241}
-    - target: {fileID: 6767124985276783310, guid: 1356d2ede097b0043b365e2af4ddd961, type: 3}
-      propertyPath: m_LookAt
       value: 
       objectReference: {fileID: 930292241}
     m_RemovedComponents: []
@@ -455,6 +455,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4277928592063535010, guid: d8ac87043d62e5441807eabcbbba08f3, type: 3}
+      propertyPath: dashColliderSize.y
+      value: 0.9
+      objectReference: {fileID: 0}
     - target: {fileID: 4750017991428381689, guid: d8ac87043d62e5441807eabcbbba08f3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.81
