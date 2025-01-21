@@ -1,6 +1,7 @@
 using KyotoNinja;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -19,10 +20,13 @@ namespace KyotoNinja
         private Vector2 dragDirection;
         private Vector2 originalColliderSize;
         private CapsuleCollider2D playerCollider;
+        private CircleCollider2D coinCollectionCollider;
 
         private int currentDashes;
         private float dashTimeRemaining;
         private float timeSlowIntensity;
+        private float coinCollectionRadius;
+        private float luckMultiplier;
 
         private enum PlayerState
         {
@@ -61,12 +65,16 @@ namespace KyotoNinja
             currentDashes = playerStats.initialDashes;
             dashTimeRemaining = playerStats.dashTime;
             timeSlowIntensity = playerStats.timeSlowIntensity;
+            coinCollectionRadius = playerStats.coinCollectionRadius;
+            luckMultiplier = playerStats.luckMultiplier;
         }
 
         private void Start()
         {
             playerCollider = GetComponent<CapsuleCollider2D>();
             originalColliderSize = playerCollider.size;
+            coinCollectionCollider = GetComponent<CircleCollider2D>();
+            coinCollectionCollider.radius *= coinCollectionRadius;
         }
 
         private void Update()
@@ -149,6 +157,16 @@ namespace KyotoNinja
                 rb.gravityScale = 0f;
                 currentDashes = playerStats.initialDashes;
                 playerCollider.size = originalColliderSize;
+            }
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if(collision.gameObject.CompareTag("Coin"))
+            {
+                // TODO: hacer que la moneda no se destruya, sino que vaya hacia el jugador, y entonces se destruya
+                Destroy(collision.gameObject);
+                playerStats.AddCurrency((int)Random.Range(1, luckMultiplier));
             }
         }
 

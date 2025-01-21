@@ -45,16 +45,16 @@ MonoBehaviour:
     basePrice: 2
     price: 0
     priceMultiplier: 1.72
-    maxLevel: 0
+    maxLevel: 5
     level: 0
-    amountPerLevel: 0
+    amountPerLevel: 0.8
   - powerUpName: Luck
     basePrice: 2
     price: 0
     priceMultiplier: 1.8
     maxLevel: 7
     level: 0
-    amountPerLevel: 0.12
+    amountPerLevel: 1
   - powerUpName: PowerUp Duration
     basePrice: 2
     price: 0
