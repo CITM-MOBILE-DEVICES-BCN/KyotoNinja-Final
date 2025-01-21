@@ -22,7 +22,9 @@ namespace KyotoNinja
         private CapsuleCollider2D playerCollider;
         private CircleCollider2D coinCollectionCollider;
 
+        private int maxDashes;
         private int currentDashes;
+        private float dashTimeMax;
         private float dashTimeRemaining;
         private float timeSlowIntensity;
         private float coinCollectionRadius;
@@ -62,8 +64,10 @@ namespace KyotoNinja
 
         private void InitializePlayer()
         {
-            currentDashes = playerStats.initialDashes;
-            dashTimeRemaining = playerStats.dashTime;
+            maxDashes = playerStats.initialDashes;
+            currentDashes = maxDashes;
+            dashTimeMax = playerStats.dashTime;
+            dashTimeRemaining = dashTimeMax;
             timeSlowIntensity = playerStats.timeSlowIntensity;
             coinCollectionRadius = playerStats.coinCollectionRadius;
             luckMultiplier = playerStats.luckMultiplier;
@@ -106,7 +110,7 @@ namespace KyotoNinja
             {
                 currentState = PlayerState.AIMING;
                 SlowTimeSpeed();
-                dashTimeRemaining = playerStats.dashTime;
+                dashTimeRemaining = dashTimeMax;
                 playerCollider.size = dashColliderSize;
             }
 
@@ -155,7 +159,7 @@ namespace KyotoNinja
                 currentState = PlayerState.ATTACHED;
                 rb.velocity = Vector2.zero;
                 rb.gravityScale = 0f;
-                currentDashes = playerStats.initialDashes;
+                currentDashes = maxDashes;
                 playerCollider.size = originalColliderSize;
             }
         }
@@ -167,6 +171,11 @@ namespace KyotoNinja
                 // TODO: hacer que la moneda no se destruya, sino que vaya hacia el jugador, y entonces se destruya
                 Destroy(collision.gameObject);
                 playerStats.AddCurrency((int)Random.Range(1, luckMultiplier));
+            }
+            else if(collision.gameObject.CompareTag("TemporalPowerUp"))
+            {
+                PowerUp powerUp = collision.GetComponent<PowerUp>();
+                StartCoroutine(ActivateTemoPowerUp(powerUp));
             }
         }
 
@@ -203,6 +212,52 @@ namespace KyotoNinja
             Time.fixedDeltaTime = 0.02f * Time.timeScale;
         }
 
+        private IEnumerator ActivateTemoPowerUp(PowerUp powerUp)
+        {
+            switch (powerUp.type)
+            {
+                case "Extra Dash":
+                    maxDashes += (int)playerStats.metaPowerUps[0].amountPerLevel;
+                    break;
+                case "Dash Time":
+                    dashTimeMax += playerStats.metaPowerUps[1].amountPerLevel;
+                    break;
+                case "Time-Slow":
+                    timeSlowIntensity += playerStats.metaPowerUps[2].amountPerLevel;
+                    break;
+                case "Collection Range":
+                    coinCollectionRadius += playerStats.metaPowerUps[3].amountPerLevel;
+                    coinCollectionCollider.radius = 1;
+                    coinCollectionCollider.radius *= coinCollectionRadius;
+                    break;
+                case "Luck":
+                    luckMultiplier += playerStats.metaPowerUps[4].amountPerLevel;
+                    break;
+            }
+            yield return new WaitForSeconds(playerStats.metaPowerUps[5].amountPerLevel * (playerStats.metaPowerUps[5].level + 1));
+
+            switch (powerUp.type)
+            {
+                case "Extra Dash":
+                    maxDashes -= (int)playerStats.metaPowerUps[0].amountPerLevel;
+                    break;
+                case "Dash Time":
+                    dashTimeMax -= playerStats.metaPowerUps[1].amountPerLevel;
+                    break;
+                case "Time-Slow":
+                    timeSlowIntensity -= playerStats.metaPowerUps[2].amountPerLevel;
+                    break;
+                case "Collection Range":
+                    coinCollectionRadius -= playerStats.metaPowerUps[3].amountPerLevel;
+                    coinCollectionCollider.radius = 1;
+                    coinCollectionCollider.radius *= coinCollectionRadius;
+                    break;
+                case "Luck":
+                    luckMultiplier -= playerStats.metaPowerUps[4].amountPerLevel;
+                    break;
+            }
+        }
+
         private void OnDrawGizmos()
         {
             if (currentState == PlayerState.AIMING)
@@ -214,6 +269,9 @@ namespace KyotoNinja
 
             Gizmos.color = Color.red;
             Gizmos.DrawWireCube(transform.position, dashColliderSize);
+
+            Gizmos.color = Color.blue;
+            Gizmos.DrawWireSphere(transform.position, coinCollectionRadius);
         }
     }
 
