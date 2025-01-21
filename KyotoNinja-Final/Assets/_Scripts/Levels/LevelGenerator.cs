@@ -65,7 +65,6 @@ public class LevelGenerator : MonoBehaviour
         }
 
         currentInterval++;  // Avanza al siguiente intervalo
-        nextSpawnHeight = currentInterval * intervalHeight;  // Actualiza la altura para el siguiente intervalo
     }
 
     GameObject[] GetRoomSetForInterval(int interval)
