@@ -4,57 +4,82 @@ using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
-    public GameObject[] roomPrefabs;  // Prefabs de las habitaciones
+    public GameObject initialRoomPrefab;  // Prefab de la habitación inicial
+    public GameObject[] roomSet1;  // Lista de habitaciones para el intervalo 1
+    public GameObject[] roomSet2;  // Lista de habitaciones para el intervalo 2
+    public GameObject[] roomSet3;  // Lista de habitaciones para el intervalo 3
+    public GameObject[] roomSet4;  // Lista de habitaciones para el intervalo 4
+    public GameObject[] roomSet5;  // Lista de habitaciones para el intervalo 5
+    public GameObject[] roomSet6;  // Lista de habitaciones para el intervalo 6
     public float roomHeight = 10f;  // Altura de cada habitación
     public Transform player;  // Referencia al jugador (para obtener su posición Y)
-    public float destroyThreshold = 15f;  // Distancia en la que las habitaciones se destruyen (ajustar según sea necesario)
+    public float destroyThreshold = 15f;  // Distancia en la que las habitaciones se destruyen
 
     private float nextSpawnHeight;  // Altura para el próximo bloque
-    private bool hasSpawnedFirstRoom = false;  // Verifica si ya se ha spawneado la primera habitación
+    private int currentInterval = 0;  // Intervalo actual (0 a 5, para 6 intervalos)
+    private const int intervalCount = 6;  // Número de intervalos de generación
+    private const float intervalHeight = 200f;  // Altura de cada intervalo
 
     private List<GameObject> spawnedRooms = new List<GameObject>();  // Lista de habitaciones generadas
 
     void Start()
     {
         nextSpawnHeight = 0f;  // Inicia en el nivel 0
-        SpawnFirstRoom();  // Spawnea primero la habitación 0
+        SpawnInitialRoom();  // Spawnea la habitación inicial
     }
 
     void Update()
     {
-        // Verifica la posición Y del jugador
-        if (player.position.y + 40f >= nextSpawnHeight)  // Si el jugador está cerca de la altura de spawn
+        // Verifica si el jugador se acerca al próximo intervalo de generación
+        if (player.position.y + 40f >= nextSpawnHeight && currentInterval < intervalCount)
         {
-            SpawnRoom();
+            SpawnRoomsForInterval();
         }
 
         // Destruye habitaciones que estén por debajo de la distancia de destrucción
         DestroyRooms();
     }
 
-    void SpawnRoom()
+    void SpawnInitialRoom()
     {
-       
-            // Después de la primera habitación, genera aleatoriamente el resto de las habitaciones (sin el elemento 0)
-            if (hasSpawnedFirstRoom)
-            {
-                int randomIndex = Random.Range(1, roomPrefabs.Length);  // Genera aleatoriamente, pero no el 0
-                GameObject newRoom = Instantiate(roomPrefabs[randomIndex], new Vector3(transform.position.x, nextSpawnHeight, transform.position.z), Quaternion.identity);
-                spawnedRooms.Add(newRoom);  // Agrega la habitación a la lista
-                nextSpawnHeight += roomHeight;  // Avanza la altura para la siguiente habitación
-            }
-        
+        // Genera la habitación inicial
+        Vector3 spawnPosition = new Vector3(transform.position.x, nextSpawnHeight, transform.position.z);
+        GameObject initialRoom = Instantiate(initialRoomPrefab, spawnPosition, Quaternion.identity);
+        spawnedRooms.Add(initialRoom);
+        nextSpawnHeight += roomHeight;  // Avanza la altura para la siguiente habitación
     }
 
-    void SpawnFirstRoom()
+    void SpawnRoomsForInterval()
     {
-        if (!hasSpawnedFirstRoom)
+        if (currentInterval >= intervalCount) return;  // No genera más si ya se completaron los intervalos
+
+        GameObject[] currentRoomSet = GetRoomSetForInterval(currentInterval);
+
+        for (int i = 0; i < 6; i++)
         {
-            // Spawnea la primera habitación siempre como el elemento 0
-            GameObject firstRoom = Instantiate(roomPrefabs[0], new Vector3(transform.position.x, nextSpawnHeight, transform.position.z), Quaternion.identity);
-            spawnedRooms.Add(firstRoom);  // Agrega la primera habitación a la lista
+            int randomIndex = Random.Range(0, currentRoomSet.Length);  // Selecciona un prefab aleatorio de la lista correspondiente
+            Vector3 spawnPosition = new Vector3(transform.position.x, nextSpawnHeight, transform.position.z);
+            GameObject newRoom = Instantiate(currentRoomSet[randomIndex], spawnPosition, Quaternion.identity);
+            spawnedRooms.Add(newRoom);  // Agrega la habitación a la lista
             nextSpawnHeight += roomHeight;  // Avanza la altura para la siguiente habitación
-            hasSpawnedFirstRoom = true;  // Marca que la primera habitación ya fue spawneada
+        }
+
+        currentInterval++;  // Avanza al siguiente intervalo
+        nextSpawnHeight = currentInterval * intervalHeight;  // Actualiza la altura para el siguiente intervalo
+    }
+
+    GameObject[] GetRoomSetForInterval(int interval)
+    {
+        // Devuelve la lista de habitaciones correspondiente al intervalo actual
+        switch (interval)
+        {
+            case 0: return roomSet1;
+            case 1: return roomSet2;
+            case 2: return roomSet3;
+            case 3: return roomSet4;
+            case 4: return roomSet5;
+            case 5: return roomSet6;
+            default: return new GameObject[0];
         }
     }
 
@@ -64,7 +89,6 @@ public class LevelGenerator : MonoBehaviour
         for (int i = spawnedRooms.Count - 1; i >= 0; i--)
         {
             GameObject room = spawnedRooms[i];
-            // Si la habitación está por debajo de la distancia de destrucción (no está cerca del jugador)
             if (room.transform.position.y < player.position.y - destroyThreshold)
             {
                 Destroy(room);  // Destruye la habitación
@@ -72,5 +96,4 @@ public class LevelGenerator : MonoBehaviour
             }
         }
     }
-
 }
