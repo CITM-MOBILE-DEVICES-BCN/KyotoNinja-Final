@@ -177,6 +177,7 @@ public class MetaPowerUpConfig
     public int level = 1;
     public float amountPerLevel;
     public float baseAmount;
+    public Sprite icon;
 }
 
 [Serializable]

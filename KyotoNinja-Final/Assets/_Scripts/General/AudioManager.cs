@@ -25,7 +25,31 @@ public class AudioManager : MonoBehaviour
     [Header("UI")]
     [SerializeField] private AudioSource buttonSource;
     
+    public float sfxVolume
+    {
+        get { return PlayerPrefs.GetFloat("SFXVolume", 1); }
+        set
+        {
+            PlayerPrefs.SetFloat("SFXVolume", value);
+            jumpingSource.volume = value;
+            attackingSource.volume = value;
+            damageSource.volume = value;
+            deathSource.volume = value;
+            buttonSource.volume = value;
+        }
+    }
 
+    public float musicVolume
+    {
+        get { return PlayerPrefs.GetFloat("MusicVolume", 1); }
+        set
+        {
+            PlayerPrefs.SetFloat("MusicVolume", value);
+            titleScreenSource.volume = value;
+            menuSource.volume = value;
+            inGameSource.volume = value;
+        }
+    }
 
     private void Awake()
     {

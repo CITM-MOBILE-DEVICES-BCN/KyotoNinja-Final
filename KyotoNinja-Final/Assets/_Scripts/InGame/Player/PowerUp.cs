@@ -11,9 +11,15 @@ public class PowerUp : MonoBehaviour
     [HideInInspector]
     public string type;
 
+    private SpriteRenderer spriteRenderer;
+
     void Start()
     {
-        type = playerStats.metaPowerUps[Random.Range(0, playerStats.metaPowerUps.Count - 1)].powerUpName;
+        int random = Random.Range(0, playerStats.metaPowerUps.Count - 1);
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        type = playerStats.metaPowerUps[random].powerUpName;
+        spriteRenderer.sprite = playerStats.metaPowerUps[random].icon;
+
         Debug.Log("PowerUp type: " + type);
     }
 }

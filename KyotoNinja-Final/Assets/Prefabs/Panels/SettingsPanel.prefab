@@ -246,6 +246,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backButton: {fileID: 230242462749293268}
+  sfxSlider: {fileID: 7416114931877619422}
+  musicSlider: {fileID: 1889418166875902490}
   settingsPanelId: SettingsPanel
 --- !u!1 &1436824811693236467
 GameObject:
@@ -1100,7 +1102,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: FX
+  m_text: Music
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7ed6bac93555d194abb61ce2fc984662, type: 2}
   m_sharedMaterial: {fileID: 5117239424114926883, guid: 7ed6bac93555d194abb61ce2fc984662, type: 2}
