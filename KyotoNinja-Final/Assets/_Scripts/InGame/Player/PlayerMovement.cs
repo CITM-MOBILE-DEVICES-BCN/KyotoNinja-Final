@@ -30,6 +30,8 @@ namespace KyotoNinja
         private float coinCollectionRadius;
         private float luckMultiplier;
 
+        private Animator playerAnimator;
+
         private enum PlayerState
         {
             IDLE,
@@ -79,6 +81,7 @@ namespace KyotoNinja
             originalColliderSize = playerCollider.size;
             coinCollectionCollider = GetComponent<CircleCollider2D>();
             coinCollectionCollider.radius *= coinCollectionRadius;
+            playerAnimator = GetComponent<Animator>();
         }
 
         private void Update()
@@ -150,6 +153,9 @@ namespace KyotoNinja
         {
             rb.velocity = Vector2.zero;
             rb.AddForce(direction.normalized * dashForce, ForceMode2D.Impulse);
+            playerAnimator.SetBool("isDashing", true);
+            playerAnimator.SetBool("isAttached", false);
+            playerAnimator.SetBool("Idle", false);
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
@@ -161,6 +167,8 @@ namespace KyotoNinja
                 rb.gravityScale = 0f;
                 currentDashes = maxDashes;
                 playerCollider.size = originalColliderSize;
+                playerAnimator.SetBool("isAttached", true);
+                playerAnimator.SetBool("isDashing", false);                
             }
         }
 
@@ -197,6 +205,7 @@ namespace KyotoNinja
             if (currentDashes > 0)
             {
                 currentDashes--;
+                playerAnimator.SetTrigger("Hurt");
             }
         }
 
@@ -274,5 +283,4 @@ namespace KyotoNinja
             Gizmos.DrawWireSphere(transform.position, coinCollectionRadius);
         }
     }
-
 }
