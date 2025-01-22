@@ -186,8 +186,7 @@ namespace KyotoNinja
         {
             if(collision.gameObject.CompareTag("Coin"))
             {
-                // TODO: hacer que la moneda no se destruya, sino que vaya hacia el jugador, y entonces se destruya
-                Destroy(collision.gameObject);
+                StartCoroutine(AtractCollectible(collision.gameObject));
                 playerStats.AddCurrency((int)Random.Range(1, luckMultiplier));
             }
             else if(collision.gameObject.CompareTag("TemporalPowerUp"))
@@ -275,6 +274,18 @@ namespace KyotoNinja
                     luckMultiplier -= playerStats.metaPowerUps[4].amountPerLevel;
                     break;
             }
+        }
+
+        private IEnumerator AtractCollectible(GameObject gameObject)
+        {
+            Vector2 direction = transform.position - gameObject.transform.position;
+            float speed = 5f;
+            while (Vector2.Distance(transform.position, gameObject.transform.position) > 0.1f)
+            {
+                gameObject.transform.position = Vector2.MoveTowards(gameObject.transform.position, transform.position, speed * Time.deltaTime);
+                yield return null;
+            }
+            Destroy(gameObject);
         }
 
         private void OnDrawGizmos()

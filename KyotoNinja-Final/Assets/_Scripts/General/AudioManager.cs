@@ -65,6 +65,12 @@ public class AudioManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
     }
 
+    private void Start()
+    {
+        sfxVolume = PlayerPrefs.GetFloat("SFXVolume",1);
+        musicVolume = PlayerPrefs.GetFloat("MusicVolume", 1);
+    }
+
     // Music
     public void PlayTitleMusic()
     {
