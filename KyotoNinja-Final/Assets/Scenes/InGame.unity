@@ -319,14 +319,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 442968c1c1d0fed40839bd4abcb3b8d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomPrefabs:
-  - {fileID: 4319871548803719398, guid: eeb19a0f5358c4d4dac18e4e6da08d8f, type: 3}
+  initialRoomPrefab: {fileID: 4319871548803719398, guid: eeb19a0f5358c4d4dac18e4e6da08d8f, type: 3}
+  roomSet1:
   - {fileID: 1906924710920891488, guid: ac0160c1a36f4b34589d82b02eeaabab, type: 3}
   - {fileID: 1741047290184989196, guid: d5fcb61ec2f262c4bb309e1e7b6acfea, type: 3}
   - {fileID: 5881162158273685458, guid: 37a665a3e95799d4bbea55edca08645b, type: 3}
   - {fileID: 9061476510518737207, guid: cf823c9feb5090949b3e6b9493052ebc, type: 3}
   - {fileID: 5294240391005754406, guid: e31e71c96d7135b4f8541578e717a121, type: 3}
   - {fileID: 6785873012194454068, guid: 3f7eda511ac73c74ab3c2fd97eed0a45, type: 3}
+  roomSet2:
+  - {fileID: 8826375033798253656, guid: 891f913334a9b6148a13c99931263ae6, type: 3}
+  - {fileID: 3956499108855229947, guid: 780552e41e4844f429f8c0c1475c1746, type: 3}
+  - {fileID: 5135552361709024192, guid: 29b829a48809d4a4aafc86c379c20e7e, type: 3}
+  - {fileID: 5620221302920786991, guid: dea3e669a23f41746aadcfedfabed0b2, type: 3}
+  - {fileID: 1824204790878514105, guid: f555389bdde46ed4b803c7d8c015de8c, type: 3}
+  - {fileID: 2961415622459244120, guid: 32533e606fabe4b489450f186adf9560, type: 3}
+  roomSet3:
+  - {fileID: 5207028119985239556, guid: d7cedca49b55dfc4bb32ec5eb8182b5d, type: 3}
+  - {fileID: 8294946831404133244, guid: 3dbd495ca5b67fa48bd64cc867ed66bc, type: 3}
+  - {fileID: 9166003588510029091, guid: 0568090a45151904d9b7116cc4793804, type: 3}
+  - {fileID: 5065159678319579854, guid: 9e2a5d864d8534d49a33aa135a001a58, type: 3}
+  - {fileID: 1112848496771786329, guid: 5bdf69220c8b9434ba7dbe2905f2c715, type: 3}
+  - {fileID: 100827791635014344, guid: 088b5484946e3f54f9bd5ab0ab151d13, type: 3}
+  roomSet4:
+  - {fileID: 6129460901871188092, guid: bad3bd098bcd9384593f8740667d55b0, type: 3}
+  - {fileID: 6067567621349018623, guid: 2a04d323512a2a34aa0c8dd509b30c7a, type: 3}
+  - {fileID: 2858413959079226043, guid: dc691c685ee04d545b40b66889db5ba2, type: 3}
+  - {fileID: 2974516762868958138, guid: 9b6646521be72e141a59c952fed244aa, type: 3}
+  - {fileID: 5725278180643941954, guid: 3a907181e57c9f14e939d1f483631e9e, type: 3}
+  - {fileID: 4454828703626922317, guid: 1795bb4a63c17c647883ccc5799e5129, type: 3}
+  roomSet5:
+  - {fileID: 6497085992862683493, guid: 9f033569b4309f84c90936a89008cbfa, type: 3}
+  - {fileID: 6805305745711860969, guid: e2e88a730f342d04d97dd911047e6fc7, type: 3}
+  - {fileID: 6983022524211824464, guid: b855592c00de2ce4f9bb2aa2c952b482, type: 3}
+  - {fileID: 9101645298365717904, guid: 2e5cdd351d1a6624da2abe6e6b68e80c, type: 3}
+  - {fileID: 7700049065744053730, guid: 7eba67585057ac543a10f0416f475b62, type: 3}
+  - {fileID: 7841917993744799730, guid: 9c5616e39354e6947847b62c0b3d4996, type: 3}
+  roomSet6:
+  - {fileID: 5113894990318090317, guid: bb8dd075b6547394c991902f6713c35a, type: 3}
+  - {fileID: 6850593733577877368, guid: 23fdd1e33fddf7a428a8b789d39fd9c7, type: 3}
+  - {fileID: 3787232406111358817, guid: 8105f6e1ff4269c40a8f21064daf583a, type: 3}
+  - {fileID: 7715874547862209867, guid: 011b3aaf8944dd54fb9d90aa665b4913, type: 3}
+  - {fileID: 1754467518937172820, guid: 308aa785820c22446b787478f5b157ce, type: 3}
+  - {fileID: 8790058046216486806, guid: f62fef8281eabd7468016ba14b58a8a1, type: 3}
   roomHeight: 30
   player: {fileID: 930292241}
   destroyThreshold: 50
@@ -455,6 +490,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 556021149533662084, guid: d8ac87043d62e5441807eabcbbba08f3, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1724529486027187720, guid: d8ac87043d62e5441807eabcbbba08f3, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 28143c136aa92794099e8e5464c19924, type: 2}
     - target: {fileID: 4750017991428381689, guid: d8ac87043d62e5441807eabcbbba08f3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.81
@@ -1288,7 +1331,6 @@ GameObject:
   - component: {fileID: 1947861361}
   - component: {fileID: 1947861364}
   - component: {fileID: 1947861363}
-  - component: {fileID: 1947861362}
   m_Layer: 5
   m_Name: CoinsText
   m_TagString: Untagged
@@ -1315,18 +1357,6 @@ RectTransform:
   m_AnchoredPosition: {x: -63, y: 249.64801}
   m_SizeDelta: {x: 285, y: 85}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1947861362
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1947861360}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee5f2fc5b43befc4aaacdb32d0223e0a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1947861363
 MonoBehaviour:
   m_ObjectHideFlags: 0

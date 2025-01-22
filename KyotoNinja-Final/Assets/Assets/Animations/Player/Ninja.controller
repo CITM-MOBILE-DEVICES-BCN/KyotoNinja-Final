@@ -40,10 +40,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: Dashing
+    m_ConditionEvent: isDashing
     m_EventTreshold: 0
   - m_ConditionMode: 2
-    m_ConditionEvent: Wall
+    m_ConditionEvent: isAttached
     m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: Idle
@@ -69,7 +69,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ninjaDash
+  m_Name: Dash
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -129,7 +129,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ninjaIdle
+  m_Name: Idle
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -159,10 +159,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: Dashing
+    m_ConditionEvent: isDashing
     m_EventTreshold: 0
   - m_ConditionMode: 2
-    m_ConditionEvent: Wall
+    m_ConditionEvent: isAttached
     m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: Idle
@@ -190,10 +190,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: Dashing
+    m_ConditionEvent: isDashing
     m_EventTreshold: 0
   - m_ConditionMode: 2
-    m_ConditionEvent: Wall
+    m_ConditionEvent: isAttached
     m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: Idle
@@ -226,13 +226,13 @@ AnimatorStateMachine:
     m_Position: {x: 80, y: 270, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 5473765247617992275}
-    m_Position: {x: 70, y: 440, z: 0}
+    m_Position: {x: 80, y: 440, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -6670142901919374452}
-    m_Position: {x: 270, y: 550, z: 0}
+    m_Position: {x: 320, y: 550, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 8436908997660508998}
-    m_Position: {x: 670, y: 500, z: 0}
+    m_Position: {x: 670, y: 430, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 8539467943239498066}
     m_Position: {x: 320, y: 90, z: 0}
@@ -255,10 +255,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: Dashing
+    m_ConditionEvent: isDashing
     m_EventTreshold: 0
   - m_ConditionMode: 2
-    m_ConditionEvent: Wall
+    m_ConditionEvent: isAttached
     m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: Idle
@@ -429,19 +429,19 @@ AnimatorController:
   m_Name: Ninja
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: New Float
+  - m_Name: Transition
     m_Type: 1
-    m_DefaultFloat: 0
+    m_DefaultFloat: 0.25
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
-  - m_Name: Dashing
+  - m_Name: isDashing
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
-  - m_Name: Wall
+  - m_Name: isAttached
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -559,10 +559,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: Dashing
+    m_ConditionEvent: isDashing
     m_EventTreshold: 0
   - m_ConditionMode: 2
-    m_ConditionEvent: Wall
+    m_ConditionEvent: isAttached
     m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: Idle
@@ -619,7 +619,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ninjaDashTrans
+  m_Name: DashTrans
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -649,10 +649,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: Dashing
+    m_ConditionEvent: isDashing
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: Wall
+    m_ConditionEvent: isAttached
     m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: Idle
@@ -678,7 +678,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ninjaWall
+  m_Name: Wall
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
