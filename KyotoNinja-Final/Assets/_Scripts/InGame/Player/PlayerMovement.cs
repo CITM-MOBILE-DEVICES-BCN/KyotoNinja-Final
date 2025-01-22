@@ -168,7 +168,17 @@ namespace KyotoNinja
                 currentDashes = maxDashes;
                 playerCollider.size = originalColliderSize;
                 playerAnimator.SetBool("isAttached", true);
-                playerAnimator.SetBool("isDashing", false);                
+                playerAnimator.SetBool("isDashing", false);
+
+                ContactPoint2D contactPoint = collision.contacts[0];
+                if (contactPoint.point.x < transform.position.x)
+                {
+                    GetComponent<SpriteRenderer>().flipX = true;
+                }
+                else
+                {
+                    GetComponent<SpriteRenderer>().flipX = false;
+                }
             }
         }
 
