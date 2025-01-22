@@ -7,6 +7,8 @@ using System.Collections.Generic;
 
 public class ShopManager : MonoBehaviour
 {
+    [SerializeField] private PlayerStats playerStats;
+
     [SerializeField] private TMP_Text currencyText;
 
     [Header("Buttons")]
@@ -50,42 +52,35 @@ public class ShopManager : MonoBehaviour
 
         mainMenuButton.onClick.AddListener(() => NavigationManager.Instance.LoadSceneAsync(mainMenuSceneId));
 
+        playerStats.RefreshPrices();
 
-        purchaseButton1.onClick.AddListener(() => BuyItem("Dash"));
-        purchaseButton2.onClick.AddListener(() => BuyItem("Dash time"));
-        purchaseButton3.onClick.AddListener(() => BuyItem("Time stop"));
-        purchaseButton4.onClick.AddListener(() => BuyItem("Coin collection"));
-        purchaseButton5.onClick.AddListener(() => BuyItem("Luck"));
+        purchaseButton1.onClick.AddListener(() => BuyUpgrade("Extra Dash"));
+        purchaseButton2.onClick.AddListener(() => BuyUpgrade("Dash Time"));
+        purchaseButton3.onClick.AddListener(() => BuyUpgrade("Time-Slow"));
+        purchaseButton4.onClick.AddListener(() => BuyUpgrade("Collection Range"));
+        purchaseButton5.onClick.AddListener(() => BuyUpgrade("Luck"));
     }
 
     private void Update()
     {
-        currencyText.text = "Currency: " + GameManager.Instance.GetCoins() + "+";
+        currencyText.text = "Currency: " + playerStats.currency + "+";
 
-        dashLevel.text = "Level " + GameManager.Instance.GetLevel(PowerUpLevel.DASHLEVEL);
-        dashTimeLevel.text = "Level " + GameManager.Instance.GetLevel(PowerUpLevel.DASHTIMELEVEL);
-        timeStopLevel.text = "Level " + GameManager.Instance.GetLevel(PowerUpLevel.TIMESTOPLEVEL);
-        coinCollectionLevel.text = "Level " + GameManager.Instance.GetLevel(PowerUpLevel.COINCOLLECTIONLEVEL);
-        luckLevel.text = "Level " + GameManager.Instance.GetLevel(PowerUpLevel.LUCKLEVEL);
+        dashLevel.text = "Level " + (playerStats.metaPowerUps[0].level + 1);
+        dashTimeLevel.text = "Level " + (playerStats.metaPowerUps[1].level + 1);
+        timeStopLevel.text = "Level " + (playerStats.metaPowerUps[2].level + 1);
+        coinCollectionLevel.text = "Level " + (playerStats.metaPowerUps[3].level + 1);
+        luckLevel.text = "Level " + (playerStats.metaPowerUps[4].level + 1);
 
-        dashPrice.text = "Upgrade " + GameManager.Instance.GetPrice(PowerUpPrice.DASHPRICE) + "+";
-        dashTimePrice.text = "Upgrade " + GameManager.Instance.GetPrice(PowerUpPrice.DASHTIMEPRICE) + "+";
-        timeStopPrice.text = "Upgrade " + GameManager.Instance.GetPrice(PowerUpPrice.TIMESTOPPRICE) + "+";
-        coinCollectionPrice.text = "Upgrade " + GameManager.Instance.GetPrice(PowerUpPrice.COINCOLLECTIONPRICE) + "+";
-        luckPrice.text = "Upgrade " + GameManager.Instance.GetPrice(PowerUpPrice.LUCKPRICE) + "+";
+        dashPrice.text = "Upgrade " + playerStats.metaPowerUps[0].price + "+";
+        dashTimePrice.text = "Upgrade " + playerStats.metaPowerUps[1].price + "+";
+        timeStopPrice.text = "Upgrade " + playerStats.metaPowerUps[2].price + "+";
+        coinCollectionPrice.text = "Upgrade " + playerStats.metaPowerUps[3].price + "+";
+        luckPrice.text = "Upgrade " + playerStats.metaPowerUps[4].price + "+";
     }
 
-
-    void TimeStop()
+    void BuyUpgrade(string name)
     {
-        //luego poner el if del precio cuando haya dinero
-
-        //TimeScale del playermovment cambiar de 0.25f a 0.20f a 0.15f a 0.10f
-        
-    }
-    void BuyItem(string itemName)
-    {
-        GameManager.Instance.BuyItem(itemName);
+        playerStats.UpgradeMetaPowerUp(name);
     }
 
 

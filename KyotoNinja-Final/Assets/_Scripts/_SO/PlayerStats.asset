@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2661a17e17be0e41876dc9baa228287, type: 3}
   m_Name: PlayerStats
   m_EditorClassIdentifier: 
-  initialDashes: 3
-  dashTime: 2
-  timeSlowIntensity: 0.1
+  filePath: C:/Users/Alex/AppData/LocalLow/DefaultCompany/Kyoto-Ninja-Unity/playerStats.dat
+  currency: 0
+  initialDashes: 1
+  dashTime: 0.5
+  timeSlowIntensity: 0.5
   maxLives: 3
   coinCollectionRadius: 1
   luckMultiplier: 1
@@ -22,43 +24,49 @@ MonoBehaviour:
   metaPowerUps:
   - powerUpName: Extra Dash
     basePrice: 2
-    price: 0
+    price: 2
     priceMultiplier: 3
     maxLevel: 5
     level: 0
     amountPerLevel: 1
+    baseAmount: 1
   - powerUpName: Dash Time
     basePrice: 2
-    price: 0
+    price: 2
     priceMultiplier: 1.91
     maxLevel: 5
     level: 0
     amountPerLevel: 0.5
+    baseAmount: 0.5
   - powerUpName: Time-Slow
     basePrice: 2
-    price: 0
+    price: 2
     priceMultiplier: 2
     maxLevel: 4
     level: 0
     amountPerLevel: -0.1
+    baseAmount: 0.5
   - powerUpName: Collection Range
     basePrice: 2
-    price: 0
+    price: 2
     priceMultiplier: 1.72
     maxLevel: 5
     level: 0
     amountPerLevel: 0.8
+    baseAmount: 1
   - powerUpName: Luck
     basePrice: 2
-    price: 0
+    price: 2
     priceMultiplier: 1.8
     maxLevel: 7
     level: 0
     amountPerLevel: 1
+    baseAmount: 1
   - powerUpName: PowerUp Duration
     basePrice: 2
-    price: 0
+    price: 2
     priceMultiplier: 2
     maxLevel: 5
     level: 0
     amountPerLevel: 3
+    baseAmount: 5

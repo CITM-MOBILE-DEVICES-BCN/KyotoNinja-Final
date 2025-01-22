@@ -253,7 +253,7 @@ namespace KyotoNinja
                     luckMultiplier += playerStats.metaPowerUps[4].amountPerLevel;
                     break;
             }
-            yield return new WaitForSeconds(playerStats.metaPowerUps[5].amountPerLevel * (playerStats.metaPowerUps[5].level + 1));
+            yield return new WaitForSeconds(playerStats.metaPowerUps[5].baseAmount + playerStats.metaPowerUps[5].amountPerLevel * playerStats.metaPowerUps[5].level);
 
             switch (powerUp.type)
             {
