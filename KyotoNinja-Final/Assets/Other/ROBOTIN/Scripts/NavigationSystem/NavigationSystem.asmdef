@@ -1,6 +1,6 @@
 {
-    "name": "NavigationSystem",
-    "rootNamespace": "NavigationSystem",
+    "name": "ROBOTIN_NavigationSystem",
+    "rootNamespace": "ROBOTIN_NavigationSystem",
     "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],

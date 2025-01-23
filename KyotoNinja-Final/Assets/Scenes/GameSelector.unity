@@ -947,7 +947,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.88575}
   m_AnchorMax: {x: 0.5, y: 0.88575}
-  m_AnchoredPosition: {x: 3.7, y: -38.7}
+  m_AnchoredPosition: {x: 3.7, y: -38.700012}
   m_SizeDelta: {x: 304.15, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1551755726
@@ -1081,7 +1081,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 2.1, y: -2.7000008}
+  m_AnchoredPosition: {x: 2.0999985, y: -2.7000008}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1839035171
@@ -1217,7 +1217,7 @@ MonoBehaviour:
   sceneName1: MainMenu_1
   sceneName2: RobotinMeta
   sceneName3: 
-  sceneName4: 
+  sceneName4: 3.Meta
 --- !u!4 &1918080465
 Transform:
   m_ObjectHideFlags: 0
