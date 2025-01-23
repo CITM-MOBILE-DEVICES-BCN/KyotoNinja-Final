@@ -7,6 +7,8 @@ using UnityEngine;
 public class PlayerHP : MonoBehaviour
 {
     public float health = 3f;
+    public float invincibilityDuration = 1f;
+    private float invincibilityTimer = 0f;
     private Animator playerAnimator;
 
     private void Start()
@@ -18,6 +20,12 @@ public class PlayerHP : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        if(invincibilityTimer > 0f)
+        {
+            invincibilityTimer -= Time.deltaTime;
+            return;
+        }
+
         OnDamageTaken?.Invoke();
         health -= damage;
         if (health <= 0f)
@@ -25,6 +33,7 @@ public class PlayerHP : MonoBehaviour
             Die();
         }
         playerAnimator.SetTrigger("Hurt");
+        invincibilityTimer = invincibilityDuration;
     }
 
     private void Die()

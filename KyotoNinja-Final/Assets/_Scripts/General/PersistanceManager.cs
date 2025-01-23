@@ -70,17 +70,4 @@ public class PersistenceManager : MonoBehaviour
 
         Debug.Log("PlayerStats loaded and applied successfully!");
     }
-
-    public void DeleteSave()
-    {
-        if (File.Exists(SaveFilePath))
-        {
-            File.Delete(SaveFilePath);
-            Debug.Log("Save file deleted.");
-        }
-        else
-        {
-            Debug.LogWarning("No save file to delete.");
-        }
-    }
 }

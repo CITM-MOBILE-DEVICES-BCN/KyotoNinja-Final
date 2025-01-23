@@ -64,8 +64,6 @@ namespace KyotoNinja
             inputMapping.Player.Touch.canceled -= OnTouchCanceled;
             inputMapping.Player.Aim.performed -= OnAimPerformed;
             inputMapping.Player.Disable();
-
-            playerHP.OnDamageTaken -= DamageAnim;
         }
 
         private void InitializePlayer()
@@ -219,6 +217,10 @@ namespace KyotoNinja
             {
                 playerHP.TakeDamage(1);
                 playerAnimator.SetTrigger("Hurt");
+            }
+            else if (collision.gameObject.CompareTag("BottomSpikes"))
+            {
+                playerHP.TakeDamage(3);
             }
         }
 

@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 115153807}
   m_Layer: 0
   m_Name: PushingSpikes
-  m_TagString: Untagged
+  m_TagString: BottomSpikes
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

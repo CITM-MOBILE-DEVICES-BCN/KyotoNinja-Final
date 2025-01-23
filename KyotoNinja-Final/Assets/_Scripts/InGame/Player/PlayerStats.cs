@@ -153,6 +153,8 @@ public class PlayerStats : ScriptableObject
 
     public void SaveToBinary(string filePath)
     {
+        DeleteSave();
+
         PlayerSerializableData data = new PlayerSerializableData
         {
             currency = currency,
@@ -163,6 +165,20 @@ public class PlayerStats : ScriptableObject
         BinaryFormatter bf = new BinaryFormatter();
         bf.Serialize(fileStream, data);
         fileStream.Close();
+    }
+
+
+    public void DeleteSave()
+    {
+        if (File.Exists(filePath))
+        {
+            File.Delete(filePath);
+            Debug.Log("Save file deleted.");
+        }
+        else
+        {
+            Debug.LogWarning("No save file to delete.");
+        }
     }
 }
 
