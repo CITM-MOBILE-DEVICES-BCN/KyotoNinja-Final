@@ -4,57 +4,56 @@ using UnityEngine;
 
 public class EnemyShooter : MonoBehaviour
 {
-    // Referencia al jugador
     public GameObject player;
-
-    // Prefab del proyectil
     public GameObject projectilePrefab;
-
-    // Velocidad del proyectil
     public float projectileSpeed = 5f;
-
-    // Tiempo entre disparos
     public float shootInterval = 2f;
-
-    // Temporizador para controlar el intervalo de disparo
+    public float shootRadius = 20f;
     private float shootTimer;
 
     private void Start()
     {
-        // Inicializamos el temporizador
         shootTimer = shootInterval;
+        if (player == null)
+        {
+            player = GameObject.FindWithTag("Player");
+            if (player == null)
+            {
+                Debug.LogError("Player object not found! Make sure the Player has the 'Player' tag.");
+            }
+        }
     }
 
     private void Update()
     {
-        // Decrementamos el temporizador
         shootTimer -= Time.deltaTime;
 
-        // Si el temporizador llega a cero, dispara
-        if (shootTimer <= 0f)
+        if (shootTimer <= 0f && IsPlayerInRange())
         {
             ShootProjectile();
-            // Reiniciamos el temporizador
             shootTimer = shootInterval;
         }
     }
 
+    private bool IsPlayerInRange()
+    {
+        if (player == null) return false;
+
+        float distanceToPlayer = Vector2.Distance(transform.position, player.transform.position);
+        return distanceToPlayer <= shootRadius;
+    }
+
     private void ShootProjectile()
     {
-        // Aseguramos que el jugador esté asignado
         if (player != null)
         {
-            // Calcular dirección hacia el jugador
             Vector2 direction = (player.transform.position - transform.position).normalized;
-
-            // Crear el proyectil
             GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
 
             // Aseguramos que el proyectil tenga un Rigidbody2D
             Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
             if (rb != null)
             {
-                // Aplicamos la velocidad al proyectil en la dirección hacia el jugador
                 rb.velocity = direction * projectileSpeed;
             }
         }

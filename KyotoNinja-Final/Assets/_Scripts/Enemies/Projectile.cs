@@ -5,7 +5,7 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     public int damage = 1;
-    public float maxDistance = 10f;
+    private float maxDistance = 20f;
     private Vector2 startPosition;
 
     private void Start()

@@ -114,10 +114,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d23a88ed6093364395585aa1122f5f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 6386669458457294398, guid: d8ac87043d62e5441807eabcbbba08f3, type: 3}
+  player: {fileID: 0}
   projectilePrefab: {fileID: 8735111591447057555, guid: 3d7c0db0437608c43b4d9be14d72f5cd, type: 3}
   projectileSpeed: 5
   shootInterval: 2
+  shootRadius: 15
 --- !u!61 &8977571366513829557
 BoxCollider2D:
   m_ObjectHideFlags: 0

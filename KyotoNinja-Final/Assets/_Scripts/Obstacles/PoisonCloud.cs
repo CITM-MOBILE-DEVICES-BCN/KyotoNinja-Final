@@ -15,7 +15,7 @@ public class PoisonCloud : MonoBehaviour
     private int direction = 1;
 
     void Update()
-    {
+    {        
         // Mover el obstáculo
         transform.Translate(Vector2.right * speed * direction * Time.deltaTime);
 
