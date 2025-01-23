@@ -14,6 +14,7 @@ namespace KyotoNinja
         [SerializeField] private float dashForce = 10f;
         [SerializeField] private float maxDragDistance = 5f;
         [SerializeField] private Vector2 dashColliderSize;
+        [SerializeField] private GameObject jumpIndicator;
 
         private InputMapping inputMapping;
         private Vector2 startPosition;
@@ -87,6 +88,8 @@ namespace KyotoNinja
             playerAnimator = GetComponent<Animator>();
             playerHP = GetComponent<PlayerHP>();
             playerHP.OnDamageTaken += DamageAnim;
+
+            jumpIndicator.SetActive(false);
         }
 
         private void Update()
@@ -94,6 +97,7 @@ namespace KyotoNinja
             if (currentState == PlayerState.AIMING)
             {
                 dashTimeRemaining -= Time.unscaledDeltaTime;
+                UpdateJumpIndicator();
                 if (dashTimeRemaining <= 0)
                 {
                     LoseDashOnAimTimeout();
@@ -133,6 +137,7 @@ namespace KyotoNinja
                 Vector2 screenPosition = context.ReadValue<Vector2>();
                 Vector2 currentPosition = Camera.main.ScreenToWorldPoint(screenPosition);
                 dragDirection = currentPosition - startPosition;
+                jumpIndicator.SetActive(false);
             }
         }
 
@@ -144,6 +149,7 @@ namespace KyotoNinja
                 PerformDash(dragDirection);
                 currentState = PlayerState.IDLE;
                 currentDashes--;
+                jumpIndicator.SetActive(false);
             }
 
             if (currentDashes <= 0)
@@ -152,6 +158,16 @@ namespace KyotoNinja
             }
 
             ResumeTimeSpeed();
+        }
+
+        private void UpdateJumpIndicator()
+        {
+            jumpIndicator.SetActive(true);
+            Vector2 clampedDirection = Vector2.ClampMagnitude(dragDirection, maxDragDistance);
+
+            jumpIndicator.transform.position = (Vector2)transform.position + clampedDirection * 0.5f;
+            jumpIndicator.transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(clampedDirection.y, clampedDirection.x) * Mathf.Rad2Deg);
+            jumpIndicator.transform.localScale = new Vector3(clampedDirection.magnitude * 0.65f, 0.2f, 1f); // Ajusta la escala según la distancia
         }
 
 
