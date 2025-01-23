@@ -194,7 +194,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b0217afff2f3924bbc12f3db9164937, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathAnimationDuration: 2
+  deathAnimationDuration: 0.5
+  slashPrefab: {fileID: 5030228332913953434, guid: 713d580914405eb4eb4ee87baff1ced6, type: 3}
 --- !u!1 &7704652549423761252
 GameObject:
   m_ObjectHideFlags: 0

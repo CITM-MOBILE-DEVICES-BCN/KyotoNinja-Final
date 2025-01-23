@@ -7,6 +7,8 @@ public class EnemyDeath : MonoBehaviour
     private Animator enemyAnimator;
     public float deathAnimationDuration = 2f;
 
+    public GameObject slashPrefab;
+
     private void Start()
     {
         enemyAnimator = GetComponent<Animator>();
@@ -20,6 +22,13 @@ public class EnemyDeath : MonoBehaviour
             {
                 Debug.Log("El enemigo ha muerto");
                 enemyAnimator.SetTrigger("Die");
+            }
+
+            GetComponent<SpriteRenderer>().color = Color.red;
+
+            if (slashPrefab != null)
+            {
+                Destroy(Instantiate(slashPrefab, transform.position, Quaternion.identity), 0.5f);
             }
 
             Destroy(gameObject, deathAnimationDuration);
