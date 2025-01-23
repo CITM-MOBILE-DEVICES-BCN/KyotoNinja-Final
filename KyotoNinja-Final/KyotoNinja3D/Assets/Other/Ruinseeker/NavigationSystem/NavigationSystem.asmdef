@@ -1,0 +1,14 @@
+{
+    "name": "RUINSEEKER_NavigationSystem",
+    "rootNamespace": "RUINSEEKER_NavigationSystem",
+    "references": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

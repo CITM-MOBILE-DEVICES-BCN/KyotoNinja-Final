@@ -1,0 +1,78 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2661a17e17be0e41876dc9baa228287, type: 3}
+  m_Name: PlayerStats
+  m_EditorClassIdentifier: 
+  filePath: C:/Users/Alex/AppData/LocalLow/DefaultCompany/Kyoto-Ninja-Unity/playerStats.data
+  currency: 2
+  initialDashes: 1
+  dashTime: 0.5
+  timeSlowIntensity: 0.5
+  maxLives: 3
+  coinCollectionRadius: 1
+  luckMultiplier: 1
+  temporaryPowerUpDuration: 5
+  metaPowerUps:
+  - powerUpName: Extra Dash
+    basePrice: 2
+    price: 2
+    priceMultiplier: 3
+    maxLevel: 5
+    level: 0
+    amountPerLevel: 1
+    baseAmount: 1
+    icon: {fileID: 21300000, guid: bc5192f95d1768b44837e6270cd84bcf, type: 3}
+  - powerUpName: Dash Time
+    basePrice: 2
+    price: 2
+    priceMultiplier: 1.91
+    maxLevel: 5
+    level: 0
+    amountPerLevel: 0.5
+    baseAmount: 0.5
+    icon: {fileID: 21300000, guid: a39b1ca017ab17f4990a7c2fae1843b2, type: 3}
+  - powerUpName: Time-Slow
+    basePrice: 2
+    price: 2
+    priceMultiplier: 2
+    maxLevel: 4
+    level: 0
+    amountPerLevel: -0.1
+    baseAmount: 0.5
+    icon: {fileID: 21300000, guid: 77ce304f190467d4fa848083040fda6f, type: 3}
+  - powerUpName: Collection Range
+    basePrice: 2
+    price: 2
+    priceMultiplier: 1.72
+    maxLevel: 5
+    level: 0
+    amountPerLevel: 0.8
+    baseAmount: 1
+    icon: {fileID: 21300000, guid: 35619d23d0b301f4aa25b4d6d6c2ea7f, type: 3}
+  - powerUpName: Luck
+    basePrice: 2
+    price: 2
+    priceMultiplier: 1.8
+    maxLevel: 7
+    level: 0
+    amountPerLevel: 1
+    baseAmount: 1
+    icon: {fileID: 21300000, guid: be6066279b7401949ac304ef103beadb, type: 3}
+  - powerUpName: PowerUp Duration
+    basePrice: 2
+    price: 2
+    priceMultiplier: 2
+    maxLevel: 5
+    level: 0
+    amountPerLevel: 3
+    baseAmount: 5
+    icon: {fileID: 21300000, guid: 13269e2082155f741ae93ed6412241cc, type: 3}
