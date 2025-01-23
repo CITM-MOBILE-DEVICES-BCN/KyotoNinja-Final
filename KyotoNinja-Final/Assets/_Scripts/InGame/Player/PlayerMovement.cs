@@ -257,6 +257,8 @@ namespace KyotoNinja
 
         private void LoseDashOnAimTimeout()
         {
+            jumpIndicator.SetActive(false);
+
             if (currentDashes > 0)
             {
                 currentDashes--;
