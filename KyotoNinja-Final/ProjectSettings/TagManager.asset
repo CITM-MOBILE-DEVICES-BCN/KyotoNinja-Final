@@ -8,6 +8,7 @@ TagManager:
   - Wall
   - Coin
   - TemporalPowerUp
+  - Spikes
   layers:
   - Default
   - TransparentFX
