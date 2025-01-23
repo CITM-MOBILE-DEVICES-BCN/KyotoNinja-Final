@@ -1216,7 +1216,7 @@ MonoBehaviour:
   button4: {fileID: 6452412632688105017}
   sceneName1: MainMenu_1
   sceneName2: RobotinMeta
-  sceneName3: 
+  sceneName3: Meta
   sceneName4: 3.Meta
 --- !u!4 &1918080465
 Transform:

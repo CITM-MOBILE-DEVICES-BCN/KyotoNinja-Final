@@ -2,36 +2,39 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BackgroundMusic : MonoBehaviour
+namespace ROBOTIN
 {
-    public static BackgroundMusic Instance;
-
-    private AudioSource audioSource;
-
-    private void Awake()
+    public class BackgroundMusic : MonoBehaviour
     {
-        if (Instance != null && Instance != this)
+        public static BackgroundMusic Instance;
+
+        private AudioSource audioSource;
+
+        private void Awake()
         {
-            Destroy(gameObject);
-            return;
+            if (Instance != null && Instance != this)
+            {
+                Destroy(gameObject);
+                return;
+            }
+
+            Instance = this;
+            audioSource = GetComponent<AudioSource>();
+            AudioManager.instance.StopMusic();
         }
 
-        Instance = this;
-        audioSource = GetComponent<AudioSource>();
-        AudioManager.instance.StopMusic();
-    }
-
-    public void PlayMusic(AudioClip newMusic)
-    {
-        if (audioSource.clip != newMusic)
+        public void PlayMusic(AudioClip newMusic)
         {
-            audioSource.clip = newMusic;
-            audioSource.Play();
+            if (audioSource.clip != newMusic)
+            {
+                audioSource.clip = newMusic;
+                audioSource.Play();
+            }
         }
-    }
 
-    public void StopMusic()
-    {
-        audioSource.Stop();
+        public void StopMusic()
+        {
+            audioSource.Stop();
+        }
     }
 }

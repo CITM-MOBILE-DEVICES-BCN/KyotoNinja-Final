@@ -1,6 +1,6 @@
 {
-    "name": "NavigationSystem",
-    "rootNamespace": "NavigationSystem",
+    "name": "RUINSEEKER_NavigationSystem",
+    "rootNamespace": "RUINSEEKER_NavigationSystem",
     "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],

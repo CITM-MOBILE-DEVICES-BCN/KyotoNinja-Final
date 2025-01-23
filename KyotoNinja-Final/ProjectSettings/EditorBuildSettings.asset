@@ -41,4 +41,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Other/Ruinseeker/Scenes/6.Game3.unity
     guid: a039716526d73044b94b4da7a098ae7c
+  - enabled: 1
+    path: Assets/Other/WaltersWalk/Scenes/Game.unity
+    guid: 9a808277c4f420947b4e00edfe6be584
+  - enabled: 1
+    path: Assets/Other/WaltersWalk/Scenes/Meta.unity
+    guid: 63d1e0f7cab5f3240afbfe25f060eb12
   m_configObjects: {}

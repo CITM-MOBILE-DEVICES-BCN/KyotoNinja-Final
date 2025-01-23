@@ -6,6 +6,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Runtime.Serialization;
 using Unity.VisualScripting;
 using UnityEngine;
+using KyotoNinja;
 
 [CreateAssetMenu(fileName = "PlayerStats", menuName = "Game/Player Stats")]
 public class PlayerStats : ScriptableObject
@@ -214,9 +215,12 @@ public class SerializableMetaPowerUpConfig
     public int level = 1;
 }
 
-[Serializable]
-public class PlayerSerializableData
+namespace KyotoNinja
 {
-    public int serializedCurrency;
-    public List<SerializableMetaPowerUpConfig> serializedMetaPowerUps;
+    [Serializable]
+    public class PlayerSerializableData
+    {
+        public int serializedCurrency;
+        public List<SerializableMetaPowerUpConfig> serializedMetaPowerUps;
+    }
 }
