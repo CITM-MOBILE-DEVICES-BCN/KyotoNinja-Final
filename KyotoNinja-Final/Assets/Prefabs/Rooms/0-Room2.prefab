@@ -1732,6 +1732,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: PoisonCloud
       objectReference: {fileID: 0}
+    - target: {fileID: 5481731872147097562, guid: 47d6b82727cb7a54392e45b28e72af7f, type: 3}
+      propertyPath: leftLimit
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481731872147097562, guid: 47d6b82727cb7a54392e45b28e72af7f, type: 3}
+      propertyPath: rightLimit
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7162221532105952549, guid: 47d6b82727cb7a54392e45b28e72af7f, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.2116778

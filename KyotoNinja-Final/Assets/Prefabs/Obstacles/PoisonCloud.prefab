@@ -99,8 +99,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
-  leftLimit: -4
-  rightLimit: 4
+  leftLimit: -0.5
+  rightLimit: 0.5
 --- !u!61 &8517563232744657702
 BoxCollider2D:
   m_ObjectHideFlags: 0

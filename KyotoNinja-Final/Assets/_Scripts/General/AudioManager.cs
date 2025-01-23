@@ -120,11 +120,8 @@ public class AudioManager : MonoBehaviour
     }
 
     // Player FX
-
-
     public void PlayJumpSound()
     {
-        Debug.Log("Jump sound function called!"); // Debug message
         if (jumpClips.Length == 0)
         {
             Debug.LogError("No jump sounds assigned!");
@@ -154,8 +151,5 @@ public class AudioManager : MonoBehaviour
     public void PlayButtonSound()
     {
         buttonSource.Play();
-        
     }
-    
-
 }

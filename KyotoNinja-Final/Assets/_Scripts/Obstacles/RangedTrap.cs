@@ -35,7 +35,7 @@ public class RangedTrap : MonoBehaviour
     void FireProjectile()
     {
         // Instanciar el proyectil
-        GameObject projectile = Instantiate(projectilePrefab, shootPoint.position, shootPoint.rotation);
+        GameObject projectile = Instantiate(projectilePrefab, shootPoint.position, projectilePrefab.transform.rotation);
 
         // Añadir velocidad al proyectil
         Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
@@ -45,6 +45,6 @@ public class RangedTrap : MonoBehaviour
         }
 
         // Opcional: Destruir el proyectil después de un tiempo
-        Destroy(projectile, 0.75f);
+        Destroy(projectile, 1f);
     }
 }

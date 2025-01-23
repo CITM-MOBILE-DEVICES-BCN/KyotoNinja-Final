@@ -20,7 +20,7 @@ public class EnemyDeath : MonoBehaviour
         {
             if (enemyAnimator != null)
             {
-                Debug.Log("El enemigo ha muerto");
+                Debug.Log(gameObject.name + " ha muerto");
                 enemyAnimator.SetTrigger("Die");
             }
 
