@@ -10,13 +10,12 @@ public class PersistenceManager : MonoBehaviour
 {
     [SerializeField] private PlayerStats playerStats;
 
-    private string SaveFilePath => Application.persistentDataPath + "/playerStats.dat";
+    private string SaveFilePath => Application.dataPath + "/PlayerStats.data";
 
     private void Start()
     {
         playerStats.ResetStats();
         playerStats.filePath = SaveFilePath;
-        //Task<bool> task = LoadAndApplyAsync();
         LoadAndApply();
     }
 
@@ -64,8 +63,12 @@ public class PersistenceManager : MonoBehaviour
 
     private void ApplyLoadedStats(PlayerSerializableData loadedStats)
     {
-        playerStats.currency = loadedStats.currency;
-        playerStats.metaPowerUps = new List<MetaPowerUpConfig>(loadedStats.metaPowerUps);
+        playerStats.currency = loadedStats.serializedCurrency;
+        for(int i = 0; i < playerStats.metaPowerUps.Count; i++)
+        {
+            playerStats.metaPowerUps[i].price = loadedStats.serializedMetaPowerUps[i].price;
+            playerStats.metaPowerUps[i].level = loadedStats.serializedMetaPowerUps[i].level;
+        }
         playerStats.CalculateStats();
 
         Debug.Log("PlayerStats loaded and applied successfully!");

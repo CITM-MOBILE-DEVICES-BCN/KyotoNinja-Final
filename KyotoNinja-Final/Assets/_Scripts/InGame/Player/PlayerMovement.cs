@@ -229,7 +229,6 @@ namespace KyotoNinja
             if(collision.gameObject.CompareTag("Coin"))
             {
                 StartCoroutine(AtractCollectible(collision.gameObject));
-                playerStats.AddCurrency((int)Random.Range(1, luckMultiplier));
             }
             else if(collision.gameObject.CompareTag("TemporalPowerUp"))
             {
@@ -338,12 +337,14 @@ namespace KyotoNinja
         {
             Vector2 direction = transform.position - gameObject.transform.position;
             float speed = 5f;
-            while (Vector2.Distance(transform.position, gameObject.transform.position) > 0.1f)
+            while (Vector2.Distance(transform.position, gameObject.transform.position) > 0.5f)
             {
                 gameObject.transform.position = Vector2.MoveTowards(gameObject.transform.position, transform.position, speed * Time.deltaTime);
                 yield return null;
             }
             Destroy(gameObject);
+            playerStats.AddCurrency((int)Random.Range(1, luckMultiplier));
+            Debug.Log("Coin Destroyed");
         }
 
         private void OnDrawGizmos()

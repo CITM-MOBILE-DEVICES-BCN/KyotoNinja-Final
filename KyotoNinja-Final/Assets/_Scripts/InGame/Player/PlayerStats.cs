@@ -157,9 +157,21 @@ public class PlayerStats : ScriptableObject
 
         PlayerSerializableData data = new PlayerSerializableData
         {
-            currency = currency,
-            metaPowerUps = metaPowerUps
+            serializedCurrency = currency
         };
+
+        data.serializedMetaPowerUps = new List<SerializableMetaPowerUpConfig>();
+
+        foreach (var metaPowerUp in metaPowerUps)
+        {
+            SerializableMetaPowerUpConfig serializedMetaPowerUp = new SerializableMetaPowerUpConfig
+            {
+                price = metaPowerUp.price,
+                level = metaPowerUp.level
+            };
+
+            data.serializedMetaPowerUps.Add(serializedMetaPowerUp);
+        }
 
         FileStream fileStream = new FileStream(filePath, FileMode.Create);
         BinaryFormatter bf = new BinaryFormatter();
@@ -195,10 +207,16 @@ public class MetaPowerUpConfig
     public float baseAmount;
     public Sprite icon;
 }
+[Serializable]
+public class SerializableMetaPowerUpConfig
+{
+    public int price;
+    public int level = 1;
+}
 
 [Serializable]
 public class PlayerSerializableData
 {
-    public int currency;
-    public List<MetaPowerUpConfig> metaPowerUps;
+    public int serializedCurrency;
+    public List<SerializableMetaPowerUpConfig> serializedMetaPowerUps;
 }
