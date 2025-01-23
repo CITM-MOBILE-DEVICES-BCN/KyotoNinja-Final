@@ -32,6 +32,16 @@ namespace MyNavigationSystem
 
             onComplete?.Invoke();
         }
+
+        public static object GetActiveScene()
+        {
+            throw new NotImplementedException();
+        }
+
+        public static void LoadScene(object buildIndex)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 

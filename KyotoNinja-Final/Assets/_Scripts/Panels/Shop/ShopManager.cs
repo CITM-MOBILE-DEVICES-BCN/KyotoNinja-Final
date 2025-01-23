@@ -18,6 +18,7 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private Button purchaseButton3;
     [SerializeField] private Button purchaseButton4;
     [SerializeField] private Button purchaseButton5;
+    [SerializeField] private Button purchaseButton6;
 
     [Header("Prices")]
     [SerializeField] private TMP_Text dashPrice;
@@ -25,6 +26,7 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private TMP_Text timeStopPrice;
     [SerializeField] private TMP_Text coinCollectionPrice;
     [SerializeField] private TMP_Text luckPrice;
+    [SerializeField] private TMP_Text durationPrice;
 
     [Header("PowerUpLevels")]
     [SerializeField] private TMP_Text dashLevel;
@@ -32,6 +34,7 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private TMP_Text timeStopLevel;
     [SerializeField] private TMP_Text coinCollectionLevel;
     [SerializeField] private TMP_Text luckLevel;
+    [SerializeField] private TMP_Text durationLevel;
 
     [Header("Button Actions")]
     [SerializeField] private string mainMenuSceneId;
@@ -59,6 +62,7 @@ public class ShopManager : MonoBehaviour
         purchaseButton3.onClick.AddListener(() => BuyUpgrade("Time-Slow"));
         purchaseButton4.onClick.AddListener(() => BuyUpgrade("Collection Range"));
         purchaseButton5.onClick.AddListener(() => BuyUpgrade("Luck"));
+        purchaseButton6.onClick.AddListener(() => BuyUpgrade("PowerUp Duration"));
     }
 
     private void Update()
@@ -70,12 +74,14 @@ public class ShopManager : MonoBehaviour
         timeStopLevel.text = "Level " + (playerStats.metaPowerUps[2].level + 1);
         coinCollectionLevel.text = "Level " + (playerStats.metaPowerUps[3].level + 1);
         luckLevel.text = "Level " + (playerStats.metaPowerUps[4].level + 1);
+        durationLevel.text = "Level " + (playerStats.metaPowerUps[5].level + 1);
 
         dashPrice.text = "Upgrade " + playerStats.metaPowerUps[0].price + "+";
         dashTimePrice.text = "Upgrade " + playerStats.metaPowerUps[1].price + "+";
         timeStopPrice.text = "Upgrade " + playerStats.metaPowerUps[2].price + "+";
         coinCollectionPrice.text = "Upgrade " + playerStats.metaPowerUps[3].price + "+";
         luckPrice.text = "Upgrade " + playerStats.metaPowerUps[4].price + "+";
+        durationPrice.text = "Upgrade " + playerStats.metaPowerUps[5].price + "+";
     }
 
     void BuyUpgrade(string name)

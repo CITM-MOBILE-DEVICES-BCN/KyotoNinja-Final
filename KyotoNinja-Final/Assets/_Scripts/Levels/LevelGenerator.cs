@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
@@ -14,6 +15,7 @@ public class LevelGenerator : MonoBehaviour
     public float roomHeight = 10f;  // Altura de cada habitación
     public Transform player;  // Referencia al jugador (para obtener su posición Y)
     public float destroyThreshold = 15f;  // Distancia en la que las habitaciones se destruyen
+    public TMP_Text heightText;  
 
     private float nextSpawnHeight;  // Altura para el próximo bloque
     private int currentInterval = 0;  // Intervalo actual (0 a 5, para 6 intervalos)
@@ -34,6 +36,11 @@ public class LevelGenerator : MonoBehaviour
         if (player.position.y + 40f >= nextSpawnHeight && currentInterval < intervalCount)
         {
             SpawnRoomsForInterval();
+        }
+
+        if (heightText != null)
+        {
+            heightText.text = player.position.y.ToString("F0") + "m";
         }
 
         // Destruye habitaciones que estén por debajo de la distancia de destrucción
