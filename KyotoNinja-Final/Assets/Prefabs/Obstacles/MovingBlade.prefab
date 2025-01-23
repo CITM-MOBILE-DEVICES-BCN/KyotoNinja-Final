@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 8584255208285808539}
   - component: {fileID: 7966233820877991072}
   - component: {fileID: 9172378935727765126}
-  - component: {fileID: 5853757020654645854}
+  - component: {fileID: 4616843556590126381}
   m_Layer: 0
   m_Name: Blade
   m_TagString: Obstacle
@@ -132,7 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 360
---- !u!58 &5853757020654645854
+--- !u!58 &4616843556590126381
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -161,12 +161,12 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.000000029802322, y: -0.000000007450581}
   serializedVersion: 2
-  m_Radius: 0.26
+  m_Radius: 0.32
 --- !u!1 &8223944311380685967
 GameObject:
   m_ObjectHideFlags: 0
