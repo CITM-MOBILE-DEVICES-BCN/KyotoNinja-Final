@@ -20,11 +20,6 @@ public class FlyingEnemy : MonoBehaviour
                 Debug.Log("El jugador ha sido dañado");
                 playerHP.TakeDamage(damage);
             }
-
-            
-            
         }
-
-
     }
 }
