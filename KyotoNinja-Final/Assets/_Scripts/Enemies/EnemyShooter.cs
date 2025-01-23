@@ -10,10 +10,13 @@ public class EnemyShooter : MonoBehaviour
     public float shootInterval = 2f;
     public float shootRadius = 20f;
     private float shootTimer;
+    private Animator enemyAnimator;
 
     private void Start()
     {
         shootTimer = shootInterval;
+        enemyAnimator = GetComponent<Animator>();
+
         if (player == null)
         {
             player = GameObject.FindWithTag("Player");
@@ -56,6 +59,7 @@ public class EnemyShooter : MonoBehaviour
             {
                 rb.velocity = direction * projectileSpeed;
             }
+            enemyAnimator.SetTrigger("Attack");
         }
     }
 }

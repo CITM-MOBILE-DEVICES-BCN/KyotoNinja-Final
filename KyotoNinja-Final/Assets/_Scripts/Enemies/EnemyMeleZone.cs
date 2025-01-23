@@ -29,7 +29,6 @@ public class EnemyMeleZone : MonoBehaviour
 
             if (enemyAnimator != null)
             {
-                Debug.Log("El enemigo ha atacado al jugador");
                 enemyAnimator.SetTrigger("Attack");
             }
         }

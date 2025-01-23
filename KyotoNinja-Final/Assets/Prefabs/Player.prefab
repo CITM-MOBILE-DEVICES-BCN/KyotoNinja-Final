@@ -284,8 +284,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.79, y: 1.49}
+  m_Offset: {x: 0, y: 0.15510638}
+  m_Size: {x: 0.79, y: 1.5434853}
   m_Direction: 0
 --- !u!58 &5617819915066250491
 CircleCollider2D:
@@ -294,7 +294,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6386669458457294398}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -356,3 +356,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 3
+  invincibilityDuration: 1

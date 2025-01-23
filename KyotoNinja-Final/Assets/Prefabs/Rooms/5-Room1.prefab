@@ -1855,6 +1855,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FlyingEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 3845267040010521991, guid: 71b05c9e86437f547b4c951c1728cd7b, type: 3}
+      propertyPath: speed
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8304685075292053739, guid: 71b05c9e86437f547b4c951c1728cd7b, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.61767215
@@ -1929,6 +1933,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FlyingEnemy (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3845267040010521991, guid: 71b05c9e86437f547b4c951c1728cd7b, type: 3}
+      propertyPath: speed
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8304685075292053739, guid: 71b05c9e86437f547b4c951c1728cd7b, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.61767215
@@ -2002,6 +2010,10 @@ PrefabInstance:
     - target: {fileID: 1248893410419468374, guid: 71b05c9e86437f547b4c951c1728cd7b, type: 3}
       propertyPath: m_Name
       value: FlyingEnemy (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3845267040010521991, guid: 71b05c9e86437f547b4c951c1728cd7b, type: 3}
+      propertyPath: speed
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8304685075292053739, guid: 71b05c9e86437f547b4c951c1728cd7b, type: 3}
       propertyPath: m_LocalScale.x
