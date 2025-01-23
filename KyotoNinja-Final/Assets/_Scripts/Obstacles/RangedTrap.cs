@@ -45,6 +45,6 @@ public class RangedTrap : MonoBehaviour
         }
 
         // Opcional: Destruir el proyectil después de un tiempo
-        Destroy(projectile, 1f);
+        Destroy(projectile, 1.25f);
     }
 }
