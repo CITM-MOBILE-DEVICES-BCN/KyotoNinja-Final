@@ -149,6 +149,7 @@ namespace KyotoNinja
             ResumeTimeSpeed();
         }
 
+
         private void PerformDash(Vector2 direction)
         {
             rb.velocity = Vector2.zero;
@@ -156,7 +157,20 @@ namespace KyotoNinja
             playerAnimator.SetBool("isDashing", true);
             playerAnimator.SetBool("isAttached", false);
             playerAnimator.SetBool("Idle", false);
+
+           
+            if (AudioManager.instance != null)
+            {
+                AudioManager.instance.PlayJumpSound();
+            }
+            else
+            {
+                Debug.LogError("AudioManager instance is missing!");
+            }
         }
+
+
+
 
         private void OnCollisionEnter2D(Collision2D collision)
         {

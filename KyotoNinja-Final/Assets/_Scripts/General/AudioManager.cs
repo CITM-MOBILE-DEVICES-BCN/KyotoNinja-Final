@@ -120,11 +120,23 @@ public class AudioManager : MonoBehaviour
     }
 
     // Player FX
+
+
     public void PlayJumpSound()
     {
+        Debug.Log("Jump sound function called!"); // Debug message
+        if (jumpClips.Length == 0)
+        {
+            Debug.LogError("No jump sounds assigned!");
+            return;
+        }
+
         jumpingSource.clip = jumpClips[Random.Range(0, jumpClips.Length)];
         jumpingSource.Play();
     }
+
+
+
     public void PlayAttackSound()
     {
         attackingSource.Play();
