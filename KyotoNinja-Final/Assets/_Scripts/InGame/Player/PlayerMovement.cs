@@ -21,6 +21,7 @@ namespace KyotoNinja
         private Vector2 originalColliderSize;
         private CapsuleCollider2D playerCollider;
         private CircleCollider2D coinCollectionCollider;
+        private PlayerHP playerHP;
 
         private int maxDashes;
         private int currentDashes;
@@ -62,6 +63,8 @@ namespace KyotoNinja
             inputMapping.Player.Touch.canceled -= OnTouchCanceled;
             inputMapping.Player.Aim.performed -= OnAimPerformed;
             inputMapping.Player.Disable();
+
+            playerHP.OnDamageTaken -= DamageAnim;
         }
 
         private void InitializePlayer()
@@ -82,6 +85,8 @@ namespace KyotoNinja
             coinCollectionCollider = GetComponent<CircleCollider2D>();
             coinCollectionCollider.radius *= coinCollectionRadius;
             playerAnimator = GetComponent<Animator>();
+            playerHP = GetComponent<PlayerHP>();
+            playerHP.OnDamageTaken += DamageAnim;
         }
 
         private void Update()
@@ -194,6 +199,11 @@ namespace KyotoNinja
                     GetComponent<SpriteRenderer>().flipX = false;
                 }
             }
+            else if (collision.gameObject.CompareTag("Obstacle"))
+            {
+                playerHP.TakeDamage(1);
+                playerAnimator.SetTrigger("Hurt");
+            }
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
@@ -207,6 +217,11 @@ namespace KyotoNinja
             {
                 PowerUp powerUp = collision.GetComponent<PowerUp>();
                 StartCoroutine(ActivateTemoPowerUp(powerUp));
+            }
+            else if (collision.gameObject.CompareTag("Obstacle"))
+            {
+                playerHP.TakeDamage(1);
+                playerAnimator.SetTrigger("Hurt");
             }
         }
 
@@ -242,6 +257,17 @@ namespace KyotoNinja
         {
             Time.timeScale = timeSlowIntensity;
             Time.fixedDeltaTime = 0.02f * Time.timeScale;
+        }
+
+        private void DamageAnim()
+        {
+            playerAnimator.SetTrigger("Hurt");
+        }
+
+        private void OnApplicationQuit()
+        {
+            Time.timeScale = 1f;
+            Time.fixedDeltaTime = 0.02f;
         }
 
         private IEnumerator ActivateTemoPowerUp(PowerUp powerUp)
